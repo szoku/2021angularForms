@@ -1,36 +1,51 @@
-<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)" class="ui large form segment">
-  <div [className]="!myForm.controls['email'].valid?'field error':'field'">
-    <label for="email">Adres e-mail</label>
-    <input type="text" id="email" name="email" formControlName="email"/>
-    <div *ngIf="!myForm.controls['email'].valid">Brakujący lub niepoprawny adres e-mail</div>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+  <div>
+    <mat-form-field hintLabel="Format xx@xx.xx" appearance="fill">
+      <mat-label>Podaj adres e-mail</mat-label>
+      <input matInput type="text" id="email" name="email"
+             formControlName='email'
+             placeholder="np. jan@kowalski.com"/>
+    </mat-form-field>
   </div>
-  <div [className]="!myForm.controls['imie'].valid?'field error':'field'">
-    <label for="imie">Imię</label>
-    <input type="text" id="imie" name="imie" formControlName="imie"/>
-    <div *ngIf="!myForm.controls['imie'].valid">Brakujące lub zbyt krótkie imię</div>
+  <div>
+    <mat-form-field hintLabel="Minimum 2 znaki" appearance="fill">
+      <mat-label>Podaj imię</mat-label>
+      <input matInput type="text" id="imie" name="imie"
+             formControlName='imie'
+             placeholder="np. Jan"/>
+    </mat-form-field>
   </div>
-  <div [className]="!myForm.controls['nazwisko'].valid?'field error':'field'">
-    <label for="nazwisko">Nazwisko</label>
-    <input type="text" id="nazwisko" name="nazwisko" formControlName="nazwisko"/>
-    <div *ngIf="!myForm.controls['nazwisko'].valid">Brakujące lub zbyt krótkie nazwisko</div>
+  <div>
+    <mat-form-field hintLabel="Minimum 2 znaki" appearance="fill">
+      <mat-label>Podaj nazwisko</mat-label>
+      <input matInput type="text" id="nazwisko" name="nazwisko"
+             formControlName='nazwisko'
+             placeholder="np. Kowalski"/>
+    </mat-form-field>
   </div>
-  <div [className]="!myForm.controls['ulica'].valid?'field error':'field'">
-    <label for="ulica">Ulica</label>
-    <input type="text" id="ulica" name="ulica" formControlName="ulica"/>
-    <div *ngIf="!myForm.controls['ulica'].valid">Brakująca ulica</div>
+  <div>
+    <mat-form-field hintLabel="Obowiązkowe" appearance="fill">
+      <mat-label>Podaj ulicę</mat-label>
+      <input matInput type="text" id="ulica" name="ulica"
+             formControlName='ulica'
+             placeholder="np. Polna 1"/>
+    </mat-form-field>
   </div>
-  <div class="two fields">
-    <div [className]="!myForm.controls['miasto'].valid?'field error':'field'">
-      <label for="miasto">Miasto</label>
-      <input type="text" id="miasto" name="miasto" formControlName="miasto"/>
-      <div *ngIf="!myForm.controls['miasto'].valid">Brakujące miasto</div>
-    </div>
-    <div [className]="!myForm.controls['kod'].valid?'field error':'field'">
-      <label for="kod">Kod pocztowy</label>
-      <input type="text" id="kod" name="kod" formControlName="kod"/>
-      <div *ngIf="!myForm.controls['kod'].valid">Błędny kod pocztowy</div>
-    </div>
+  <div>
+    <mat-form-field hintLabel="Obowiązkowe" appearance="fill">
+      <mat-label>Podaj miasto</mat-label>
+      <input matInput type="text" id="miasto" name="miasto"
+             formControlName='miasto'
+             placeholder="np. Warszawa"/>
+    </mat-form-field>
+    <mat-form-field hintLabel="Format 00-000" appearance="fill">
+      <mat-label>Podaj kod pocztowy</mat-label>
+      <input matInput type="text" id="kod" name="kod"
+             formControlName='kod'
+             placeholder="np. 00-950"/>
+    </mat-form-field>
   </div>
-  <button type="submit" class="ui positive button" [disabled]="!myForm.valid">Submit</button>
-  <div *ngIf="!myForm.valid">Formularz zawiera błędy</div>
+  <button mat-raised-button type="submit"
+          [disabled]="!myForm.valid">Submit
+  </button>
 </form>
